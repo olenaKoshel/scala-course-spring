@@ -23,4 +23,3 @@ object arithmetic:
    * Optional task: make `power` tail-recursive.
    */
   val power: (Number, Number) => Number = ???
-

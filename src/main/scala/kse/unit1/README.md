@@ -2,11 +2,10 @@
 
 You are challenged to implement `addition`, `multiplication` and `power` functions:
 * replace `???` with your implementation;
-* functions must be tail-recursive;
-* functions must cover either **non-negative** numbers (regular tasks);
-  or **any (negative including)** numbers (optional tasks) for  `addition` and `multiplication` only; keep `p` in `power` **non-negative**.
+* functions must cover **non-negative** numbers for  `addition` and `multiplication` only; keep `p` in `power` **non-negative**.
 * it is allowed to use only `S`, `Z`, `addition`
 and `multiplication` functions. It is not allowed to use regular `+`, `*` or `pow`.
+* make functions tail-recursive (optional);
 * it is not allowed to use Scala 2 syntax if Scala 3 syntax is applicable
 (i.e. curly braces `{...}` instead of semicolon `:` and tabulations);
 * all tests should pass;
