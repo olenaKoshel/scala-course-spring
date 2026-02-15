@@ -7,12 +7,12 @@ object `access modifiers`:
   import classes.MyClass
 
   /**
-   * All objects, values, and methods are public by default and can be accessed from anywhere.
-   * That's why we do not use the `public` modifier at all.
+   * All objects, values, and methods are public by default and can be accessed from anywhere. That's why we do not use
+   * the `public` modifier at all.
    */
   object `public object`:
 
-    val publicValue: String = "I'm public"
+    val publicValue: String          = "I'm public"
     private val privateValue: String = "I'm private"
 
     def publicMethod(value: String): Unit =

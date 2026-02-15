@@ -61,7 +61,7 @@ jobs:
 
           branch_name='${{ github.head_ref }}'
           package_name="${branch_name//-/}"
-          allowed_path="${package_name}/challange/"
+          allowed_path="${package_name}/challenge/"
 
           # Iterate line-by-line (handles multiline output safely)
           while IFS= read -r file; do
@@ -80,7 +80,7 @@ jobs:
           
           branch_name='${{ github.head_ref }}'
           package_name="${branch_name//-/}"
-          allowed_path="${package_name}/challange"
+          allowed_path="${package_name}/challenge"
           
           test_root="src/test"
           

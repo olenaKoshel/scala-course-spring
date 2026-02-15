@@ -3,13 +3,13 @@ package kse.cheatsheet
 object `methods and functions`:
 
   /**
-   * Methods and functions can't be defined in thin air; they must be
-   * members of a class or an object.
+   * Methods and functions can't be defined in thin air; they must be members of a class or an object.
    */
   def `I belong to the methods and functions object`: Unit =
     println("Im in the context of an object")
 
   object methods:
+
     /**
      * Methods can have arguments (`name`) and an explicit return type (`String`).
      *
@@ -27,12 +27,11 @@ object `methods and functions`:
       /**
        * We can use conditions as operators...
        */
-      if age < 14 then
-        println("Call the parents!")
+      if age < 14 then println("Call the parents!")
 
       /**
-       * ... but we prefer to use them as expressions.
-       * The result of the method is the result of the last evaluated expression.
+       * ... but we prefer to use them as expressions. The result of the method is the result of the last evaluated
+       * expression.
        */
       if age < 14 then "You are to young to communicate!"
       else s"Hello, $name!"
@@ -43,7 +42,6 @@ object `methods and functions`:
     val greeted: String = strictGreeterMethod("John Doe", 42)
 
   end methods
-
 
   /**
    * Functions are values. Done.
@@ -58,8 +56,8 @@ object `methods and functions`:
     val contextlessGreeterValue = "Hello!"
 
     /**
-     * This is a function with the type `String => String`.
-     * It means that it accepts a `String` argument and returns a `String` result.
+     * This is a function with the type `String => String`. It means that it accepts a `String` argument and returns a
+     * `String` result.
      */
     val greeterFunction: String => String =
       (name: String) => s"Hello, $name!"
@@ -78,12 +76,11 @@ object `methods and functions`:
         /**
          * We can use conditions as operators...
          */
-        if age < 14 then
-          println("Call the parents!")
+        if age < 14 then println("Call the parents!")
 
         /**
-         * ... but we prefer to use them as expressions.
-         * The result of the method is the result of the last evaluated expression.
+         * ... but we prefer to use them as expressions. The result of the method is the result of the last evaluated
+         * expression.
          */
         if age < 14 then "You are to young to communicate!"
         else s"Hello, $name!"
@@ -97,8 +94,8 @@ object `methods and functions`:
 
   /**
    * Higher-order functions are functions that
-   * - can accept functions as arguments
-   * - can return functions as a result
+   *   - can accept functions as arguments
+   *   - can return functions as a result
    */
   object `higher order methods and functions`:
 
@@ -124,13 +121,12 @@ object `methods and functions`:
       if policy(age) then s"Hello, $name!"
       else "You are young policy violator!"
 
-    val greetedFollowingThePolicy = policyRespectfulMethod(agePolicy, "John Doe", 42)
+    val greetedFollowingThePolicy        = policyRespectfulMethod(agePolicy, "John Doe", 42)
     val greetedFollowingTheInlinedPolicy = policyRespectfulMethod(age => age > 13, "John Doe", 42)
 
     /**
-     * This method has two groups of arguments.
-     * If we initialize only the first argument group, this method returns a function that accepts
-     * the next two arguments.
+     * This method has two groups of arguments. If we initialize only the first argument group, this method returns a
+     * function that accepts the next two arguments.
      */
     def thePerfectPolicyRespectfulMethod(policy: Int => Boolean)(name: String, age: Int) =
       if policy(age) then s"Hello, $name!"
@@ -141,26 +137,21 @@ object `methods and functions`:
     val greeted: String = iKnowThePolicy("John Doe", 42)
 
     /**
-     * Each method can be considered as a function.
-     * Not vice versa!
+     * Each method can be considered as a function. Not vice versa!
      */
     val policyRespectfulFunction: (Int => Boolean, String, Int) => String = policyRespectfulMethod
 
     /**
      * That's why we can do a trick with `thePerfectPolicyRespectfulMethod`.
      */
-    val thePerfectPolicyRespectfulFunction: (Int => Boolean) => (String, Int) => String = thePerfectPolicyRespectfulMethod
+    val thePerfectPolicyRespectfulFunction: (Int => Boolean) => (String, Int) => String =
+      thePerfectPolicyRespectfulMethod
 
     /**
-     * Here we have a kind of partially initialized function.
-     * When we provide a policy to `(Int => Boolean) => (String, Int) => String`, we initialize the first component,
-     * and `(String, Int) => String` is what's left. And it's a function!
+     * Here we have a kind of partially initialized function. When we provide a policy to
+     * `(Int => Boolean) => (String, Int) => String`, we initialize the first component, and `(String, Int) => String`
+     * is what's left. And it's a function!
      */
     val andIKnowThePolicy: (String, Int) => String = thePerfectPolicyRespectfulFunction(age => age > 13)
 
   end `higher order methods and functions`
-  
-  
-
-
-

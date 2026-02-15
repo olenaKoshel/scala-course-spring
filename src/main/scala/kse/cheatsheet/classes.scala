@@ -1,23 +1,23 @@
 package kse.cheatsheet
 
 object classes:
+
   /**
    * A regular class in Scala
    *
-   * All members of a class are immutable.
-   * All members of a class are private unless they are prefixed with `val`.
+   * All members of a class are immutable. All members of a class are private unless they are prefixed with `val`.
    */
   class MyClass(privateMember: String, val publicMember: String):
     /**
-     * This part of the class is part of the constructor and will be evaluated,
-     * i.e., `"Initializing MyClass..."` will be printed.
+     * This part of the class is part of the constructor and will be evaluated, i.e., `"Initializing MyClass..."` will
+     * be printed.
      */
     println("Initializing MyClass...")
 
     /**
      * This part of the class is also part of the constructor and will be evaluated as well.
      */
-    val anotherPublicMember = 42
+    val anotherPublicMember          = 42
     private val anotherPrivateMember = publicMember
 
     def publicMethod(): Unit =
@@ -30,8 +30,7 @@ object classes:
   /**
    * A case class, or data class, in Scala
    *
-   * All members of a class are immutable.
-   * All members of a case class are public; no need to use `val`.
+   * All members of a class are immutable. All members of a case class are public; no need to use `val`.
    */
   case class MyCaseClass(publicValue: String, anotherPublicValue: String)
 

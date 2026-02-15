@@ -40,16 +40,21 @@ end TailRecursiveFactorialSpecification
 object HigherOrderFunctionsSpecification extends Properties("Higher order functions"):
   import functions.`higher-order functions`.*
 
-  property("sum of integers should be correctly evaluated") = forAll(genNonNegativeNumberRange): (range: (Number, Number)) =>
-    val (start, end) = range
-    sumOfIntegers(start, end) == (start to end).sum
+  property("sum of integers should be correctly evaluated") = forAll(genNonNegativeNumberRange):
+    (range: (Number, Number)) =>
+      val (start, end) = range
+      sumOfIntegers(start, end) == (start to end).sum
 
-  property("sum of cubes should be correctly evaluated") = forAll(genNonNegativeNumberRange): (range: (Number, Number)) =>
-    val (start, end) = range
-    sumOfCubes(start, end) == (start to end).map(v => v * v * v).sum
+  property("sum of cubes should be correctly evaluated") = forAll(genNonNegativeNumberRange):
+    (range: (Number, Number)) =>
+      val (start, end) = range
+      sumOfCubes(start, end) == (start to end).map(v => v * v * v).sum
 
-  property("sum of factorials should be correctly evaluated") = forAll(genNonNegativeNumberRange): (range: (Number, Number)) =>
-    val (start, end) = range
-    sumOfFactorials(start, end) == (start to end).map(v => (0 to v.toInt).fold(1)((acc, value) => if value == 0 then acc else acc * value)).sum
+  property("sum of factorials should be correctly evaluated") = forAll(genNonNegativeNumberRange):
+    (range: (Number, Number)) =>
+      val (start, end) = range
+      sumOfFactorials(start, end) == (start to end)
+        .map(v => (0 to v.toInt).fold(1)((acc, value) => if value == 0 then acc else acc * value))
+        .sum
 
 end HigherOrderFunctionsSpecification
