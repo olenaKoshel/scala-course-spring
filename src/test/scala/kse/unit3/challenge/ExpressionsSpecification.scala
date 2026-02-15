@@ -104,10 +104,11 @@ end BooleanSubstitutionSpecification
 
 object VariableSubstitutionSpecification extends Properties("Variable Substitution"):
 
-  property("substitution into different variable should make no changes") = forAll: (v1: Variable, v2: Variable, substitution: Expression) =>
-    v1 != v2 ==> {
-      v1.substitute(v2, substitution) == v1
-    }
+  property("substitution into different variable should make no changes") = forAll:
+    (v1: Variable, v2: Variable, substitution: Expression) =>
+      v1 != v2 ==> {
+        v1.substitute(v2, substitution) == v1
+      }
 
   property("substitution into the same variable should return the given expression") = ???
 
