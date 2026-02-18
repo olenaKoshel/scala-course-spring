@@ -30,9 +30,7 @@ object arithmetic:
         case (m, 0) => 0
         case (m,n) => addition(multiplication(m,n-1), m)
 
-  /**
-   * Optional task: make `power` tail-recursive.
-   */
+
   val power: (Number, Number) => Number =
     (m,n) =>
       require(n >= 0 && m >= 0, "should be positive or 0")
