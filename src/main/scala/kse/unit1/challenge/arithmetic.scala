@@ -18,9 +18,8 @@ object arithmetic:
       def additionRec(acc: Number, n: Number): Number =
         n match
           case 0 => acc
-          case _ => additionRec(S(acc), n-1L)
-      additionRec(m,n)
-
+          case _ => additionRec(S(acc), n - 1L)
+      additionRec(m, n)
 
   val multiplication: (Number, Number) => Number =
     (m, n) =>
@@ -31,13 +30,12 @@ object arithmetic:
         n match
           case 0 => 0
           case 1 => acc
-          case _ => multRec(addition(acc, m), n-1L)
+          case _ => multRec(addition(acc, m), n - 1L)
 
-      multRec(m,n)
-
+      multRec(m, n)
 
   val power: (Number, Number) => Number =
-    (b,p) =>
+    (b, p) =>
       require(p >= 0 && b >= 0, "should be positive or 0")
 
       @tailrec
@@ -45,6 +43,6 @@ object arithmetic:
         n match
           case 0L => 1L
           case 1L => acc
-          case n => powRec(multiplication(acc, b), n-1L)
+          case n  => powRec(multiplication(acc, b), n - 1L)
 
-      powRec(b,p)
+      powRec(b, p)
