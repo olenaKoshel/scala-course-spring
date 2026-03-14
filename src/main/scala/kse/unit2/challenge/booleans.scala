@@ -7,34 +7,33 @@ object booleans:
   case object True
   case object False
 
-  type True  = True.type
-  type False = False.type
+  type True    = True.type
+  type False   = False.type
   type Boolean = True | False
 
   val negation: Boolean => Boolean = value =>
     value match
-      case True => False
+      case True  => False
       case False => True
-
 
   val conjunction: (Boolean, => Boolean) => Boolean = (left, right) =>
     left match
       case False => False
-      case True => right
+      case True  => right
 
   val disjunction: (Boolean, => Boolean) => Boolean = (left, right) =>
     left match
-      case True => True
+      case True  => True
       case False => right
 
   val implication: (Boolean, => Boolean) => Boolean = (left, right) =>
     left match
       case False => True
-      case True => right
+      case True  => right
 
   val equivalence: (Boolean, => Boolean) => Boolean = (left, right) =>
     left match
-      case True => right
+      case True  => right
       case False => negation(right)
 
   extension (value: Boolean)
@@ -58,11 +57,10 @@ object booleans:
     @tailrec
     def go(remaining: List[Boolean], acc: Boolean): Boolean =
       remaining match
-        case Nil => acc
+        case Nil          => acc
         case head :: tail => go(tail, operation(head, acc))
 
     go(list, unit)
-
 
   val conjunctionOfElements: List[Boolean] => Boolean =
     list => fold(conjunction, True)(list)
