@@ -36,10 +36,9 @@ object ConjunctionSpecification extends Properties("Conjunction"):
   property("False ∧ value is False") = forAll: (value: Boolean) =>
     (False ∧ value) == False
 
-
   property("False ∧ value should ignore the second argument") = forAll: (value: Boolean) =>
     var evaluated = false
-    val result = False ∧ { evaluated = true; value }
+    val result    = False ∧ { evaluated = true; value }
     !evaluated
 
 end ConjunctionSpecification
@@ -51,9 +50,8 @@ object DisjunctionSpecification extends Properties("Disjunction"):
 
   property("True ∨ value should ignore the second argument") = forAll: (value: Boolean) =>
     var evaluated = false
-    val result = True ∨ { evaluated = true; value }
+    val result    = True ∨ { evaluated = true; value }
     !evaluated
-
 
   property("False ∨ value is value") = forAll: (value: Boolean) =>
     (False ∨ value) == value
@@ -70,7 +68,7 @@ object ImplicationSpecification extends Properties("Implication"):
 
   property("False → value should ignore the second argument") = forAll: (value: Boolean) =>
     var evaluated = false
-    val result = False → { evaluated = true; value }
+    val result    = False → { evaluated = true; value }
     !evaluated
 
 end ImplicationSpecification
