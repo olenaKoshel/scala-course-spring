@@ -121,12 +121,12 @@ object FoldSpecification extends Properties("Fold"):
     Nil.conjunction == True
 
   property("Conjunction of all elements from non-empty list should be correctly evaluated") = forAll:
-    (booleans: List[Boolean]) => booleans.conjunction == booleans.foldRight[Boolean](???)((value, acc) => value ∧ acc)
+    (booleans: List[Boolean]) => booleans.conjunction == booleans.foldRight[Boolean](True)((value, acc) => value ∧ acc)
 
   property("Disjunction of all elements from the empty list should be False") = propBoolean:
     Nil.disjunction == False
 
   property("Disjunction of all elements from non-empty list should be correctly evaluated") = forAll:
-    (booleans: List[Boolean]) => booleans.disjunction == booleans.foldRight[Boolean](???)((value, acc) => value ∨ acc)
+    (booleans: List[Boolean]) => booleans.disjunction == booleans.foldRight[Boolean](False)((value, acc) => value ∨ acc)
 
 end FoldSpecification
