@@ -58,7 +58,7 @@ object booleans:
     def go(remaining: List[Boolean], acc: Boolean): Boolean =
       remaining match
         case Nil          => acc
-        case head :: tail => go(tail, operation(head, acc))
+        case head :: tail => go(tail, operation(acc, head))
 
     go(list, unit)
 
