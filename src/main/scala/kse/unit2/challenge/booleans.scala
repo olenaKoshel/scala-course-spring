@@ -53,14 +53,14 @@ object booleans:
     @targetName("equivalence")
     infix def ↔(that: => Boolean): Boolean = equivalence(value, that)
 
-  def fold(operation: (Boolean, Boolean) => Boolean, unit: Boolean)(list: List[Boolean]): Boolean =
+  def fold(operation: (Boolean, => Boolean) => Boolean, unit: Boolean)(list: List[Boolean]): Boolean =
     @tailrec
     def go(remaining: List[Boolean], acc: Boolean): Boolean =
       remaining match
         case Nil          => acc
-        case head :: tail => go(tail, operation(acc, head))
+        case head :: tail => go(tail, operation(head, acc))
 
-    go(list, unit)
+    go(list.reverse, unit)
 
   val conjunctionOfElements: List[Boolean] => Boolean =
     list => fold(conjunction, True)(list)
