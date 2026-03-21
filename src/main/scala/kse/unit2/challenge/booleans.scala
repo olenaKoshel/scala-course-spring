@@ -7,66 +7,41 @@ object booleans:
   case object True
   case object False
 
-  type True    = True.type
-  type False   = False.type
-  type Boolean = True | False
+  type True  = True.type
+  type False = False.type
+  type Boolean
 
-  val negation: Boolean => Boolean = value =>
-    value match
-      case True  => False
-      case False => True
+  val negation: Boolean => Boolean = ???
 
-  val conjunction: (Boolean, => Boolean) => Boolean = (left, right) =>
-    left match
-      case False => False
-      case True  => right
+  val conjunction: (Boolean, => Boolean) => Boolean = ???
 
-  val disjunction: (Boolean, => Boolean) => Boolean = (left, right) =>
-    left match
-      case True  => True
-      case False => right
+  val disjunction: (Boolean, => Boolean) => Boolean = ???
 
-  val implication: (Boolean, => Boolean) => Boolean = (left, right) =>
-    left match
-      case False => True
-      case True  => right
+  val implication: (Boolean, => Boolean) => Boolean = ???
 
-  val equivalence: (Boolean, => Boolean) => Boolean = (left, right) =>
-    left match
-      case True  => right
-      case False => negation(right)
+  val equivalence: (Boolean, => Boolean) => Boolean = ???
 
   extension (value: Boolean)
 
     @targetName("negation")
-    infix def unary_! : Boolean = negation(value)
+    infix def unary_! : Boolean = ???
 
     @targetName("conjunction")
-    infix def ∧(that: => Boolean): Boolean = conjunction(value, that)
+    infix def ∧(that: => Boolean): Boolean = ???
 
     @targetName("disjunction")
-    infix def ∨(that: => Boolean): Boolean = disjunction(value, that)
+    infix def ∨(that: => Boolean): Boolean = ???
 
     @targetName("implication")
-    infix def →(that: => Boolean): Boolean = implication(value, that)
+    infix def →(that: => Boolean): Boolean = ???
 
     @targetName("equivalence")
-    infix def ↔(that: => Boolean): Boolean = equivalence(value, that)
+    infix def ↔(that: => Boolean): Boolean = ???
 
-  def fold(operation: (Boolean, => Boolean) => Boolean, unit: Boolean)(list: List[Boolean]): Boolean =
-    @tailrec
-    def go(remaining: List[Boolean], acc: Boolean): Boolean =
-      remaining match
-        case Nil          => acc
-        case head :: tail => go(tail, operation(head, acc))
+  def fold(operation: (Boolean, Boolean) => Boolean, unit: Boolean)(list: List[Boolean]): Boolean = ???
 
-    go(list.reverse, unit)
-
-  val conjunctionOfElements: List[Boolean] => Boolean =
-    list => fold(conjunction, True)(list)
-
-  val disjunctionOfElements: List[Boolean] => Boolean =
-    list => fold(disjunction, False)(list)
+  val conjunctionOfElements: List[Boolean] => Boolean = ???
+  val disjunctionOfElements: List[Boolean] => Boolean = ???
 
   extension (booleans: List[Boolean])
     infix def conjunction: Boolean = conjunctionOfElements(booleans)
